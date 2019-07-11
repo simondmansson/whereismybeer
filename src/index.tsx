@@ -8,7 +8,7 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import * as serviceWorker from './serviceWorker';
 
 const httpLink = createHttpLink({
-    uri: 'https://graphqlbolaget.appspot.com/graph/view'
+    uri: 'https://graphqlbolaget.appspot.com/graph'
 });
 
 const client = new ApolloClient({
