@@ -1,15 +1,14 @@
-import React from 'react';
-import { Search, OnSubmit} from './Search';
-import { useState } from 'react';
-import { FindBeverage } from './FetchBeverage';
-import { GeolocatedProps, geolocated } from 'react-geolocated';
+import React, { useState } from 'react';
+import { geolocated, GeolocatedProps } from 'react-geolocated';
 import './App.css';
+import { FindBeverage } from './FetchBeverage';
+import { OnSubmit, Search } from './Search';
 
 const App: React.FunctionComponent<GeolocatedProps> = ({isGeolocationAvailable, isGeolocationEnabled, coords}) => {
   const [query, setQuery] = useState<string>("");
   const [render, setRender] = useState<boolean>(false);
 
-  const onClick: OnSubmit = (text:string) => {
+  const onClick: OnSubmit = (text) => {
     setQuery(text);
     setRender(true);
   };

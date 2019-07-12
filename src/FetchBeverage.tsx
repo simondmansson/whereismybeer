@@ -1,6 +1,6 @@
-import React, { FunctionComponent } from 'react';
-import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
+import React, { FunctionComponent } from 'react';
 
 export const FETCH_BEVERAGE = gql`
     query pSearch($beverage: String!) {
