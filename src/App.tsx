@@ -2,9 +2,10 @@ import React from 'react';
 import { Search, OnSubmit} from './Search';
 import { useState } from 'react';
 import { FindBeverage } from './FetchBeverage';
+import { GeolocatedProps, geolocated } from 'react-geolocated';
 import './App.css';
 
-const App: React.SFC = () => {
+const App: React.FunctionComponent<GeolocatedProps> = ({isGeolocationAvailable, isGeolocationEnabled, coords}) => {
   const [query, setQuery] = useState<string>("");
   const [render, setRender] = useState<boolean>(false);
 
@@ -15,10 +16,15 @@ const App: React.SFC = () => {
 
   return (
     <div className="App">
+        {
+          coords ? <p>{coords.latitude }</p> : <p></p>
+        }
         <Search callback={onClick}/>
-        {render ? <FindBeverage query={query}/> :<span></span> }
+        {render ? <FindBeverage query={query}/> : <span></span> }
     </div>
   );
 }
 
-export default App;
+export default geolocated({
+  userDecisionTimeout: 5000
+})(App);
