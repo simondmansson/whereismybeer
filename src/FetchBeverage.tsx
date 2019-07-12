@@ -11,15 +11,16 @@ export const FETCH_BEVERAGE = gql`
         }
     }
 `;
-/*
+
 export interface Beverage {
     ProductId: number,
     ProductNameBold: string,
     Price: number
 };
-*/
-export const Drinks = () => {
+
+export const Drinks: React.SFC = () => {
     const { data, error, loading } = useQuery(FETCH_BEVERAGE, {variables: {beverage: "Tuborg"}});
+
     if (loading) {
       return <div>Loading...</div>;
     };
@@ -29,7 +30,7 @@ export const Drinks = () => {
 
     return (
       <ul>
-        {data.productSearch.map(product => (
+        {data.productSearch.map((product: Beverage) => (
           <li key={product.ProductId}>
           <p>{product.ProductNameBold}</p>
           <p>{ product.Price } kr </p>

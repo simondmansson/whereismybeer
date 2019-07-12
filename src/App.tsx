@@ -1,6 +1,6 @@
 import React from 'react';
 import Search from './Search';
-import {Drinks } from './FetchBeverage.js';
+import {Drinks } from './FetchBeverage';
 import './App.css';
 
 const App: React.SFC = () => {
