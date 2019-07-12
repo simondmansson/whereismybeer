@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
 
@@ -18,8 +18,12 @@ export interface Beverage {
     Price: number
 };
 
-export const Drinks: React.SFC = () => {
-    const { data, error, loading } = useQuery(FETCH_BEVERAGE, {variables: {beverage: "Tuborg"}});
+type BeverageProps = {
+  query:string
+};
+
+export const FindBeverage:FunctionComponent<BeverageProps> = ({ query }) => {
+    const { data, error, loading } = useQuery(FETCH_BEVERAGE, {variables: {beverage: query}});
 
     if (loading) {
       return <div>Loading...</div>;
