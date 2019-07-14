@@ -1117,6 +1117,17 @@
   dependencies:
     "@babel/types" "^7.3.0"
 
+"@types/google-maps-react@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@types/google-maps-react/-/google-maps-react-2.0.1.tgz#e4c8a181dd35abedc08fb35cd522e8595d49cc0f"
+  dependencies:
+    "@types/googlemaps" "*"
+    "@types/react" "*"
+
+"@types/googlemaps@*":
+  version "3.37.0"
+  resolved "https://registry.yarnpkg.com/@types/googlemaps/-/googlemaps-3.37.0.tgz#85596a2b93ded3850ac83ff575b66c34053c0ac8"
+
 "@types/graphql@^14.2.2":
   version "14.2.2"
   resolved "https://registry.yarnpkg.com/@types/graphql/-/graphql-14.2.2.tgz#10f197e6f8559c11b16d630c5e9c10c3c8e61c5e"
@@ -3851,6 +3862,10 @@ globby@^6.1.0:
     object-assign "^4.0.1"
     pify "^2.0.0"
     pinkie-promise "^2.0.0"
+
+google-maps-react@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/google-maps-react/-/google-maps-react-2.0.2.tgz#e03fbba032fe570fb38744bf9cd10b946c591cae"
 
 graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.6:
   version "4.1.15"
@@ -7004,7 +7019,6 @@ react-error-overlay@^5.1.6:
 react-geolocated@^2.5.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/react-geolocated/-/react-geolocated-2.5.0.tgz#d631e4c493ab1dfdd7471a6305487386cc72b8f5"
-  integrity sha512-YCkziSMS6JQh9cuuQPPZJfCItLSArkj2BYChjLarmpeIV64MNMXnXLFWRCQPjGa6uMCdAtt3Pyau2g/vfflT9Q==
   dependencies:
     prop-types "^15.5.8"
 
