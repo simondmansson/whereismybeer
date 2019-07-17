@@ -6,25 +6,23 @@ import { Map,
     MapProps,
     InfoWindowProps,
     MarkerProps  } from 'google-maps-react';
-import { geolocated, GeolocatedProps } from 'react-geolocated';
 
-const GMap: React.FunctionComponent<GeolocatedProps & MapProps & InfoWindowProps & MarkerProps> = ({google, coords}) => {
+type Coords = {
+    latitude: number,
+    longitude: number
+}
+const GMap: React.FunctionComponent<MapProps> = ({google}) => {
     return(
-        coords ?
             <Map
                 google={google}
                 initialCenter={{
-                    lat: coords.latitude,
-                    lng: coords.longitude
+                    lat: 55,
+                    lng: 55
                 }}
             />
-        : <Map google={google}/>
     );
 }
 
 export default GoogleApiWrapper({
-    apiKey: ""
-})
-geolocated({
-  userDecisionTimeout: 5000
+    apiKey: "AIzaSyDiptHqalHCAQN9u3xveB855L58uIDQKUg"
 })(GMap);

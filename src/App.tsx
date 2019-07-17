@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
 import { FindBeverage } from './FetchBeverage';
-import GMap from './GMap';
 import { OnSubmit, Search } from './Search';
+import MapContainer from './MapContainer'
 
 const App: React.FunctionComponent = () => {
   const [query, setQuery] = useState<string>("");
@@ -17,7 +17,7 @@ const App: React.FunctionComponent = () => {
     <div className="App">
         <Search callback={onClick}/>
         {render ? <FindBeverage query={query}/> : <span></span> }
-        <GMap />
+        <MapContainer />
     </div>
   );
 }
