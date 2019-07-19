@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export type OnSubmit = (t:string) => void;
+export type OnSubmit = (text:string) => void;
 type SearchProps = {
   callback: OnSubmit
 }

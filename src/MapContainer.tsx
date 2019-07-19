@@ -1,13 +1,16 @@
 import React from 'react';
-import GMap from './GMap';
+import GoogleMap from './GoogleMap';
 import { geolocated, GeolocatedProps } from 'react-geolocated';
 
 const MapContainer: React.FunctionComponent<GeolocatedProps> = ({coords}) => {
   return(
-      coords ? <GMap /> : <div></div>
+      <div>
+      { coords ? <p>{coords.latitude} {coords.longitude}</p> : <p></p> }
+      {coords ? <GoogleMap Coordinates={{latitude: coords.latitude, longitude: coords.longitude}}  /> : <div></div>}
+      </div>
   );
 }
 
 export default geolocated({
-  userDecisionTimeout: 5000
+  userDecisionTimeout: 500
 })(MapContainer);

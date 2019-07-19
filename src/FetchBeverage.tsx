@@ -8,14 +8,18 @@ export const FETCH_BEVERAGE = gql`
             ProductId
             ProductNameBold
             Price
+            Volume
+            AlcoholPercentage
         }
     }
 `;
 
 export interface Beverage {
+    AlcoholPercentage: number,
     ProductId: number,
     ProductNameBold: string,
-    Price: number
+    Price: number,
+    Volume: number
 };
 
 type BeverageProps = {
@@ -38,6 +42,8 @@ export const FindBeverage:FunctionComponent<BeverageProps> = ({ query }) => {
           <li key={product.ProductId}>
           <p>{product.ProductNameBold}</p>
           <p>{ product.Price } kr </p>
+          <p>{ product.Volume } ml </p>
+          <p>{ product.AlcoholPercentage } % </p>
           </li>
         ))}
       </ul>
