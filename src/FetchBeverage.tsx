@@ -1,6 +1,7 @@
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import React, { FunctionComponent } from 'react';
+import { SearchProps } from './CommonProps';
 
 export const FETCH_BEVERAGE = gql`
     query pSearch($beverage: String!) {
@@ -22,11 +23,7 @@ export interface Beverage {
     Volume: number
 };
 
-type BeverageProps = {
-  query:string
-};
-
-export const FindBeverage:FunctionComponent<BeverageProps> = ({ query }) => {
+export const FindBeverage:FunctionComponent<SearchProps> = ({ query }) => {
     const { data, error, loading } = useQuery(FETCH_BEVERAGE, {variables: {beverage: query}});
 
     if (loading) {

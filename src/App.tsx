@@ -1,23 +1,31 @@
 import React, { useState } from 'react';
 import './App.css';
 import { FindBeverage } from './FetchBeverage';
+import { FindSites } from './FetchSite'
 import { OnSubmit, Search } from './Search';
-import MapContainer from './MapContainer'
 
 const App: React.FunctionComponent = () => {
-  const [query, setQuery] = useState<string>("");
+  const [beverage, setBeverage] = useState<string>("");
+  const [location, setLocation] = useState<string>("");
   const [render, setRender] = useState<boolean>(false);
 
-  const onClick: OnSubmit = (text) => {
-    setQuery(text);
+  const onClick: OnSubmit = (beverage, location) => {
+    setBeverage(beverage);
+    setLocation(location);
     setRender(true);
   };
 
   return (
     <div className="App">
         <Search callback={onClick}/>
-        {render ? <FindBeverage query={query}/> : <span></span> }
-        <MapContainer />
+        { render ?
+            <section>
+              <FindBeverage query={beverage} />
+              <FindSites query={location} />
+            </section>
+          :
+            <div></div>
+        }
     </div>
   );
 }

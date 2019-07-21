@@ -1,8 +1,10 @@
 import React from 'react';
 import GoogleMap from './GoogleMap';
 import { geolocated, GeolocatedProps } from 'react-geolocated';
+import {Site} from './FetchSite'
 
-const MapContainer: React.FunctionComponent<GeolocatedProps> = ({coords}) => {
+const MapContainer: React.FunctionComponent<GeolocatedProps & any> = ({coords}, locations:Site[]) => {
+  console.log(locations)
   return(
       <div>
       { coords ? <p>{coords.latitude} {coords.longitude}</p> : <p></p> }
