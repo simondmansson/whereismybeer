@@ -22,11 +22,11 @@ type Position = {
 }
 
 export interface Site {
-  SiteId: string,
-  Name: string,
-  Address: string
-  OpeningHours: string,
-  Position: Position
+  siteId: string,
+  name: string,
+  address: string
+  openingHours: string,
+  position: Position
 };
 
 export const FindSites:FunctionComponent<SearchProps> = ({ query }) => {
