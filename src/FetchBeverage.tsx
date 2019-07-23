@@ -2,7 +2,14 @@ import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import React, { FunctionComponent } from 'react';
 import { SearchProps } from './CommonProps';
-
+import {
+  Card,
+  CardText,
+  CardBody,
+  CardHeader,
+  Row,
+  Col,
+  Button } from 'reactstrap';
 export const FETCH_BEVERAGE = gql`
     query pSearch($beverage: String!) {
         productSearch(SearchQuery: $beverage){
@@ -34,15 +41,19 @@ export const FindBeverage:FunctionComponent<SearchProps> = ({ query }) => {
     };
 
     return (
-      <ul>
+      <Row>
         {data.productSearch.map((product: Beverage) => (
-          <li key={product.ProductId}>
-          <p>{product.ProductNameBold}</p>
-          <p>{ product.Price } kr </p>
-          <p>{ product.Volume } ml </p>
-          <p>{ product.AlcoholPercentage } % </p>
-          </li>
+          <Col sm={{size: 'auto'}} key={product.ProductId}>
+          <Card>
+              <CardHeader>{product.ProductNameBold}</CardHeader>
+            <CardBody>
+              <CardText>{ product.Price } kr </CardText>
+              <CardText>{ product.Volume } ml </CardText>
+              <CardText>{ product.AlcoholPercentage } % </CardText>
+            </CardBody>
+          </Card>
+          </Col>
         ))}
-      </ul>
+      </Row>
     );
 }
