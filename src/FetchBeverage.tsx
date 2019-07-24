@@ -2,11 +2,13 @@ import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import React, { FunctionComponent } from 'react';
 import { SearchProps } from './CommonProps';
+import Loading from './Loading';
 import {
   Card,
   CardText,
   CardBody,
   CardHeader,
+  Container,
   Row,
   Col
 } from 'reactstrap';
@@ -34,26 +36,28 @@ export const FindBeverage:FunctionComponent<SearchProps> = ({ query }) => {
     const { data, error, loading } = useQuery(FETCH_BEVERAGE, {variables: {beverage: query}});
 
     if (loading) {
-      return <div>Loading...</div>;
+      return <Loading />
     };
     if (error) {
       return <div>Error! {error.message}</div>;
     };
 
     return (
-      <Row>
-        {data.productSearch.map((product: Beverage) => (
-          <Col sm={{size: 'auto'}} key={product.ProductId}>
-          <Card>
-              <CardHeader>{product.ProductNameBold}</CardHeader>
-            <CardBody>
-              <CardText>{ product.Price } kr </CardText>
-              <CardText>{ product.Volume } ml </CardText>
-              <CardText>{ product.AlcoholPercentage } % </CardText>
-            </CardBody>
-          </Card>
-          </Col>
-        ))}
-      </Row>
+      <Container fluid>
+        <Row noGutters>
+          {data.productSearch.map((product: Beverage) => (
+              <Col md="6" sm="4" key={product.ProductId}>
+              <Card>
+                  <CardHeader>{product.ProductNameBold}</CardHeader>
+                <CardBody>
+                  <CardText>{ product.Price } kr </CardText>
+                  <CardText>{ product.Volume } ml </CardText>
+                  <CardText>{ product.AlcoholPercentage } % </CardText>
+                </CardBody>
+              </Card>
+              </Col>
+          ))}
+        </Row>
+      </Container>
     );
 }
