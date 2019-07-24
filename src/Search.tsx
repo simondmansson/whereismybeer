@@ -13,7 +13,7 @@ export const Search: React.FunctionComponent<SearchProps> = ({callback}) => {
   return (
     <Form onSubmit={(e) => {e.preventDefault(); callback(beverage, location); }}>
       <Row>
-        <Col md={3}>
+        <Col md={{size: 'auto'}}>
           <FormGroup>
             <Label htmlFor="beverage-input">Beverage</Label>
             <Input
@@ -25,7 +25,7 @@ export const Search: React.FunctionComponent<SearchProps> = ({callback}) => {
             />
           </FormGroup>
         </Col>
-        <Col md={3}>
+        <Col md={{size: 'auto'}}>
           <FormGroup>
             <Label htmlFor="location-input">Location</Label>
             <Input
@@ -37,8 +37,7 @@ export const Search: React.FunctionComponent<SearchProps> = ({callback}) => {
           </FormGroup>
         </Col>
       </Row>
-      <Button type="submit">Search</Button>
+      <Button outline color="secondary" size="lg" type="submit">Search</Button>
     </Form>
   );
 }
-
