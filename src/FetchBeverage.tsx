@@ -8,8 +8,8 @@ import {
   CardBody,
   CardHeader,
   Row,
-  Col,
-  Button } from 'reactstrap';
+  Col
+} from 'reactstrap';
 export const FETCH_BEVERAGE = gql`
     query pSearch($beverage: String!) {
         productSearch(SearchQuery: $beverage){

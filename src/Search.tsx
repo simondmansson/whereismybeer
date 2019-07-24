@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Col, Row, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 export type OnSubmit = (beverage:string, location:string) => void;
 type SearchProps = {
