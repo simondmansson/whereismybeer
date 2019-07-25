@@ -1,3 +1,3 @@
-export type SearchProps = {
+export interface SearchProps {
   query:string
 };

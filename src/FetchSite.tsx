@@ -1,25 +1,29 @@
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import React, { FunctionComponent } from 'react';
-import {SearchProps} from './CommonProps';
+import { SearchProps } from './CommonProps';
 import MapContainer from './MapContainer';
 import Loading from './Loading';
+import { StoreMarker, SiteMarkerArray } from './SiteMarker';
 
 export const FETCH_SITES = gql`
     query sSearch($city: String!) {
-        siteSearch(SearchQuery: $city){
+        siteSearch(SearchQuery: $city) {
           SiteId
           Name
           Address
           OpeningHours
-          Position
+          Position {
+            Lat
+            Long
+          }
         }
     }
 `;
 
 type Position = {
-  Long: number,
-  Lat: number
+  long: number,
+  lat: number
 }
 
 export interface Site {
@@ -29,6 +33,7 @@ export interface Site {
   openingHours: string,
   position: Position
 };
+
 
 export const FindSites:FunctionComponent<SearchProps> = ({ query }) => {
     const { data, error, loading } = useQuery(FETCH_SITES, {variables: { city: query }});
@@ -40,7 +45,15 @@ export const FindSites:FunctionComponent<SearchProps> = ({ query }) => {
       return <div>Error! {error.message}</div>;
     };
 
-    return (
-      <MapContainer locations={data}/>
+    if(data) {
+      let sites: SiteMarkerArray = data.siteSearch.map((site: Site) => <StoreMarker {...site}/>);
+      console.log(sites)
+      return (
+        <MapContainer sites={sites} />
+      );
+    }
+
+    return(
+      <div></div>
     );
 }

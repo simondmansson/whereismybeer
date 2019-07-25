@@ -1,20 +1,22 @@
 import React from 'react';
+import { SiteMarkerArray } from './SiteMarker';
+import Loading from './Loading';
 import {
     GoogleMapProvider,
-    InfoWindow,
     MapBox,
     Marker,
   } from '@googlemap-react/core'
 
 export type Coordinate = number;
-export type CoordinateProps = {
-    Coordinates: {
+export type GoogleMapProps = {
+    sites: SiteMarkerArray
+    coordinates: {
         latitude: Coordinate,
         longitude: Coordinate
     }
 };
 
-const GoogleMap: React.FunctionComponent<CoordinateProps> = ({Coordinates}) => {
+const GoogleMap: React.FunctionComponent<GoogleMapProps> = ({coordinates, sites}) => {
     return(
         <GoogleMapProvider>
             <MapBox
@@ -24,21 +26,22 @@ const GoogleMap: React.FunctionComponent<CoordinateProps> = ({Coordinates}) => {
                     width: '100%',
                 }}
                 opts={{
-                    center: {lat: Coordinates.latitude, lng: Coordinates.longitude},
+                    center: {lat: coordinates.latitude, lng: coordinates.longitude},
                     zoom: 14,
                 }}
-                LoadingComponent={<p>Loading...</p>}
+                LoadingComponent={<Loading />}
             />
             <Marker
                 id="marker"
                 opts={{
                     label: 'You',
                     position: {
-                        lat: Coordinates.latitude,
-                        lng: Coordinates.longitude
+                        lat: coordinates.latitude,
+                        lng: coordinates.longitude
                     },
                 }}
             />
+            ...sites
         </GoogleMapProvider>
     );
 }
