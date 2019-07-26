@@ -1,14 +1,16 @@
 import React from 'react';
 import GoogleMap from './GoogleMap';
 import { geolocated, GeolocatedProps } from 'react-geolocated';
-import {Site} from './FetchSite'
+import { SiteMarkerArray } from './SiteMarker';
 
-const MapContainer: React.FunctionComponent<GeolocatedProps & any> = ({coords}, locations:Site[]) => {
-  console.log(locations)
+export interface MapContainerProps {
+  sites: SiteMarkerArray
+}
+
+const MapContainer: React.FunctionComponent<GeolocatedProps & MapContainerProps> = ({coords, sites}) => {
   return(
       <div>
-      { coords ? <p>{coords.latitude} {coords.longitude}</p> : <p></p> }
-      {coords ? <GoogleMap Coordinates={{latitude: coords.latitude, longitude: coords.longitude}}  /> : <div></div>}
+     {coords ? <GoogleMap coordinates={{latitude: coords.latitude, longitude: coords.longitude}} sites={sites} /> : <div></div>}
       </div>
   );
 }
