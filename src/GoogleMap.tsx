@@ -4,8 +4,8 @@ import Loading from './Loading';
 import {
     GoogleMapProvider,
     MapBox,
-    Marker,
-  } from '@googlemap-react/core'
+    Marker
+  } from '@googlemap-react/core';
 
 export type Coordinate = number;
 export type GoogleMapProps = {
@@ -41,7 +41,7 @@ const GoogleMap: React.FunctionComponent<GoogleMapProps> = ({coordinates, sites}
                     },
                 }}
             />
-            ...sites
+            sites
         </GoogleMapProvider>
     );
 }

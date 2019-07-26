@@ -45,15 +45,8 @@ export const FindSites:FunctionComponent<SearchProps> = ({ query }) => {
       return <div>Error! {error.message}</div>;
     };
 
-    if(data) {
       let sites: SiteMarkerArray = data.siteSearch.map((site: Site) => <StoreMarker {...site}/>);
-      console.log(sites)
       return (
         <MapContainer sites={sites} />
       );
-    }
-
-    return(
-      <div></div>
-    );
 }
