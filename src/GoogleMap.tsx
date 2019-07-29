@@ -16,7 +16,7 @@ export type GoogleMapProps = {
 const GoogleMap: React.FunctionComponent<GoogleMapProps> = ({sites}) => {
     console.log(sites);
 
-    const [center, setCenter] = useState({lat: 40.7128, lng: -74.006});
+    const [center, setCenter] = useState({lat: 55.794841, lng: 13.992352});
     useEffect(() => {
         if (navigator.geolocation)
         navigator.geolocation.getCurrentPosition((position: Position) =>
