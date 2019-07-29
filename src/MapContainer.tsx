@@ -1,20 +1,17 @@
 import React from 'react';
 import GoogleMap from './GoogleMap';
-import { geolocated, GeolocatedProps } from 'react-geolocated';
-import { SiteMarkerArray } from './SiteMarker';
+import { Site } from './Site';
 
 export interface MapContainerProps {
-  sites: SiteMarkerArray
+  sites: Site[]
 }
 
-const MapContainer: React.FunctionComponent<GeolocatedProps & MapContainerProps> = ({coords, sites}) => {
+const MapContainer: React.FunctionComponent<MapContainerProps> = ({sites}) => {
   return(
       <div>
-     {coords ? <GoogleMap coordinates={{latitude: coords.latitude, longitude: coords.longitude}} sites={sites} /> : <div></div>}
+       <GoogleMap sites={sites} />
       </div>
   );
 }
 
-export default geolocated({
-  userDecisionTimeout: 500
-})(MapContainer);
+export default MapContainer;

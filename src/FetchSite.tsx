@@ -4,7 +4,7 @@ import React, { FunctionComponent } from 'react';
 import { SearchProps } from './CommonProps';
 import MapContainer from './MapContainer';
 import Loading from './Loading';
-import { StoreMarker, SiteMarkerArray } from './SiteMarker';
+import { Site } from './Site';
 
 export const FETCH_SITES = gql`
     query sSearch($city: String!) {
@@ -21,18 +21,6 @@ export const FETCH_SITES = gql`
     }
 `;
 
-type Position = {
-  long: number,
-  lat: number
-}
-
-export interface Site {
-  siteId: string,
-  name: string,
-  address: string
-  openingHours: string,
-  position: Position
-};
 
 
 export const FindSites:FunctionComponent<SearchProps> = ({ query }) => {
@@ -45,8 +33,8 @@ export const FindSites:FunctionComponent<SearchProps> = ({ query }) => {
       return <div>Error! {error.message}</div>;
     };
 
-      let sites: SiteMarkerArray = data.siteSearch.map((site: Site) => <StoreMarker {...site}/>);
-      return (
-        <MapContainer sites={sites} />
-      );
+    let sites:Site[] = data.siteSearch;
+    return (
+      <MapContainer sites={sites} />
+    );
 }

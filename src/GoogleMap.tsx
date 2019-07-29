@@ -1,5 +1,6 @@
-import React from 'react';
-import { SiteMarkerArray } from './SiteMarker';
+import React, {useEffect, useState} from 'react';
+import { StoreMarker } from './SiteMarker';
+import {Site } from './Site';
 import Loading from './Loading';
 import {
     GoogleMapProvider,
@@ -9,24 +10,33 @@ import {
 
 export type Coordinate = number;
 export type GoogleMapProps = {
-    sites: SiteMarkerArray
-    coordinates: {
-        latitude: Coordinate,
-        longitude: Coordinate
-    }
+    sites: Site[]
 };
 
-const GoogleMap: React.FunctionComponent<GoogleMapProps> = ({coordinates, sites}) => {
+const GoogleMap: React.FunctionComponent<GoogleMapProps> = ({sites}) => {
+    console.log(sites);
+
+    const [center, setCenter] = useState({lat: 40.7128, lng: -74.006});
+    useEffect(() => {
+        if (navigator.geolocation)
+        navigator.geolocation.getCurrentPosition((position: Position) =>
+            setCenter({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+            }),
+        )
+    }, []);
+
     return(
         <GoogleMapProvider>
             <MapBox
-                apiKey= {process.env.MAPSAPIKEY}
+                apiKey= "AIzaSyAPXl7MEUJcggKxsTSktz33El38jIWXjik"
                 style={{
                     height: '100vh',
                     width: '100%',
                 }}
                 opts={{
-                    center: {lat: coordinates.latitude, lng: coordinates.longitude},
+                    center: center,
                     zoom: 14,
                 }}
                 LoadingComponent={<Loading />}
@@ -35,13 +45,11 @@ const GoogleMap: React.FunctionComponent<GoogleMapProps> = ({coordinates, sites}
                 id="marker"
                 opts={{
                     label: 'You',
-                    position: {
-                        lat: coordinates.latitude,
-                        lng: coordinates.longitude
-                    },
+                    position: center,
                 }}
             />
-            sites
+        {sites.map((site) => <StoreMarker key={site.SiteId} {...site}/>)}
+
         </GoogleMapProvider>
     );
 }

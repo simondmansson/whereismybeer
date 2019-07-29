@@ -1,32 +1,29 @@
 import React from 'react';
-import { Site } from './FetchSite';
+import { Site } from './Site';
 import {
     Marker,
     InfoWindow
   } from '@googlemap-react/core';
 
-export interface SiteMarker {};
-export type SiteMarkerArray = Array<SiteMarker>;
-
-export const StoreMarker: React.FunctionComponent<Site> & SiteMarker = ({siteId, name, address, openingHours, position}) => {
+export const StoreMarker: React.FunctionComponent<Site> = ({SiteId, Name, Address, OpeningHours, Position}) => {
     return(
-        <div id={siteId}>
+        <>
             <Marker
-                id={siteId}
+                id={SiteId}
                 opts={{
                     position: {
-                        lat: position.lat,
-                        lng: position.long
+                        lat: Position.Lat,
+                        lng: Position.Long
                     }
                 }}
             />
             <InfoWindow
-                anchorId={siteId}
+                anchorId={SiteId}
                 opts={{
-                    content: `${name}\nAddress: ${address}\nHours:${openingHours}`
+                    content: `${Name}\nAddress: ${Address}\nHours:${OpeningHours}`
                 }}
                 visible
             />
-        </div>
+        </>
     );
 }
