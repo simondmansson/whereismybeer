@@ -14,8 +14,6 @@ export type GoogleMapProps = {
 };
 
 const GoogleMap: React.FunctionComponent<GoogleMapProps> = ({sites}) => {
-    console.log(sites);
-
     const [center, setCenter] = useState({lat: 55.794841, lng: 13.992352});
     useEffect(() => {
         if (navigator.geolocation)
@@ -28,7 +26,7 @@ const GoogleMap: React.FunctionComponent<GoogleMapProps> = ({sites}) => {
     }, []);
 
     return(
-        <GoogleMapProvider>
+        <GoogleMapProvider >
             <MapBox
                 apiKey= "AIzaSyAPXl7MEUJcggKxsTSktz33El38jIWXjik"
                 style={{
@@ -48,8 +46,7 @@ const GoogleMap: React.FunctionComponent<GoogleMapProps> = ({sites}) => {
                     position: center,
                 }}
             />
-        {sites.map((site) => <StoreMarker key={site.SiteId} {...site}/>)}
-
+            {sites.map((site) => <StoreMarker key={site.SiteId} {...site}/>)}
         </GoogleMapProvider>
     );
 }

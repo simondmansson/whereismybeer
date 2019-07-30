@@ -16,7 +16,7 @@ const App: React.FunctionComponent = () => {
   };
 
   return (
-    <div className="App">
+    <div className="App" id="grid">
         <Search callback={onClick}/>
         { render ?
             <section>

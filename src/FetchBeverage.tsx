@@ -43,7 +43,7 @@ export const FindBeverage:FunctionComponent<SearchProps> = ({ query }) => {
     };
 
     return (
-      <Container fluid>
+      <Container id="search-results" fluid>
         <Row noGutters>
           {data.productSearch.map((product: Beverage) => (
               <Col md="6" sm="4" key={product.ProductId}>
