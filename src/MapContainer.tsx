@@ -8,8 +8,8 @@ export interface MapContainerProps {
 
 const MapContainer: React.FunctionComponent<MapContainerProps> = ({sites}) => {
   return(
-      <div>
-       <GoogleMap sites={sites} />
+      <div id="map-container">
+        <GoogleMap sites={sites} />
       </div>
   );
 }
