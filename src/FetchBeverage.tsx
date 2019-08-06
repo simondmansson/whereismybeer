@@ -50,9 +50,9 @@ export const FindBeverage:FunctionComponent<SearchProps> = ({ query }) => {
               <Card>
                   <CardHeader>{product.ProductNameBold}</CardHeader>
                 <CardBody>
-                  <CardText>{ product.Price } kr </CardText>
-                  <CardText>{ product.Volume } ml </CardText>
-                  <CardText>{ product.AlcoholPercentage } % </CardText>
+                  <CardText> Price: { product.Price } kr </CardText>
+                  <CardText> Volume: { product.Volume } ml </CardText>
+                  <CardText> Alcohol: { product.AlcoholPercentage } % </CardText>
                 </CardBody>
               </Card>
               </Col>
