@@ -11,7 +11,7 @@ export const Search: React.FunctionComponent<SearchProps> = ({callback}) => {
   const [ location, setLocation ] = useState<string>('');
 
   return (
-    <Form id="header" onSubmit={(e) => {e.preventDefault(); callback(beverage, location); }}>
+    <Form onSubmit={(e) => {e.preventDefault(); callback(beverage, location); }}>
       <Row>
         <Col md={{size: 'auto'}}>
           <FormGroup>

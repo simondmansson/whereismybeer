@@ -14,6 +14,19 @@ font-size: 1em;
 text-align: left;
 }
 
+.bottom {
+    padding: 1em;
+    background: #6c757d;
+}
+
+.no-content {
+    height: 400px;
+}
+
+.github-icon {
+    height: 100;
+    width: 100;
+}
 
 #grid {
     display: grid;
@@ -21,9 +34,8 @@ text-align: left;
         'header'
         'content'
         'footer';
-      grid-template-rows: 86px auto 100px;
+      grid-template-rows: auto;
 }
-
 
 #header {
     grid-area: header;
