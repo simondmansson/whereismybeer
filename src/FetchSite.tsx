@@ -23,7 +23,7 @@ export const FETCH_SITES = gql`
 
 
 
-export const FindSites:FunctionComponent<SearchProps> = ({ query }) => {
+export const FetchSites:FunctionComponent<SearchProps> = ({ query }) => {
     const { data, error, loading } = useQuery(FETCH_SITES, {variables: { city: query }});
 
     if (loading) {

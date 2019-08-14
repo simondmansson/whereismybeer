@@ -77,11 +77,11 @@ text-align: left;
     }
 
     #search-results {
-        grid-area: content-right;
+        grid-area: content-left;
         min-width: 600px;
     }
 
     #map-container {
-        grid-area: content-left;
+        grid-area: content-right;
     }
  }
