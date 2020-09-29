@@ -1,3 +1,5 @@
+# As of 1 nov 2020 Systembolaget no longer provides price information through their open APIs.
+
 # Where is my beer
 
 ### An essential web app for finding a Systembolaget that has a beverage you enjoy.
